@@ -27,6 +27,52 @@ python test_camera.py 0 8765
 - No object detection or processing is performed—frames are sent as-is.
 - Make sure `config.py` exists and contains the
 
+## sticher.py
+
+This script captures a series of images from a webcam, stitches them into a panorama, and optionally streams the final stitched image to a connected WebSocket client. It’s useful for generating panoramic views using multiple overlapping frames.
+
+### Usage
+
+```sh
+python sticher.py <camera_index> <port>
+```
+
+- `<camera_index>`: Index of the camera to use (e.g., `0` for the default webcam).
+- `<port>`: Port number to run the WebSocket server on.
+
+**Example:**
+```sh
+python test_camera.py 0 8765
+```
+
+### Workflow
+
+- Starts a WebSocket server on port 8765.
+- Waits for a WebSocket client to connect.
+- Captures 3 images from the webcam (5 seconds apart by default).
+- Stitches the images together into a panorama.
+- Crops and saves the result as stitched_image.jpg.
+- Sends the image to the connected client in base64 format.
+
+
+### Workflow
+
+- The number of images and delay can be adjusted in the script via:
+    NUM_IMAGES_TO_CAPTURE
+    CAPTURE_DELAY
+- Output is saved to:
+    Folder: unstitched/ (raw images)
+    File: stitched_image.jpg (final output)
+- The script requires a display for image preview (cv2.imshow()).
+- WebSocket clients must connect before the image capture begins.
+- If stitching fails, the server will send a "STITCHING_FAILED" message.
+
+###⚠️ Caution
+
+- The camera must remain steady during the entire capture process. Avoid shaking or repositioning it.
+- Each captured image should have at least ~50% overlap with the previous one to ensure reliable stitching.
+- Poor lighting, motion blur, or lack of shared features between frames can cause stitching to fail.
+
 ## client.py
 
 `client.py` is a Python script for receiving and displaying a live video stream over a WebSocket connection. It connects to a video server, receives base64-encoded video frames, decodes them, and displays them in real time using OpenCV.
