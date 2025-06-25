@@ -42,7 +42,7 @@ python sticher.py <camera_index> <port>
 
 **Example:**
 ```sh
-python test_camera.py 0 8765
+python sticher.py 0 8765
 ```
 
 ### Workflow
