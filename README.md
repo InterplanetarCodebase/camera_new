@@ -67,7 +67,7 @@ python test_camera.py 0 8765
 - WebSocket clients must connect before the image capture begins.
 - If stitching fails, the server will send a "STITCHING_FAILED" message.
 
-###⚠️ Caution
+### ⚠️ Caution
 
 - The camera must remain steady during the entire capture process. Avoid shaking or repositioning it.
 - Each captured image should have at least ~50% overlap with the previous one to ensure reliable stitching.
