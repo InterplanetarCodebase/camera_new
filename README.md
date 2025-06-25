@@ -58,11 +58,11 @@ python sticher.py 0 8765
 ### Workflow
 
 - The number of images and delay can be adjusted in the script via:
-    NUM_IMAGES_TO_CAPTURE
-    CAPTURE_DELAY
+    - NUM_IMAGES_TO_CAPTURE
+    - CAPTURE_DELAY
 - Output is saved to:
-    Folder: unstitched/ (raw images)
-    File: stitched_image.jpg (final output)
+    - Folder: unstitched/ (raw images)
+    - File: stitched_image.jpg (final output)
 - The script requires a display for image preview (cv2.imshow()).
 - WebSocket clients must connect before the image capture begins.
 - If stitching fails, the server will send a "STITCHING_FAILED" message.
