@@ -32,18 +32,17 @@ python test_camera.py 0 8765
 This script captures a series of images from a webcam, stitches them into a panorama, and optionally streams the final stitched image to a connected WebSocket client. It’s useful for generating panoramic views using multiple overlapping frames.
 
 ### Usage
-
+Run the server
 ```sh
 python sticher.py <camera_index> <port>
+```
+Run the client
+```sh
+python client_pano.py <port>
 ```
 
 - `<camera_index>`: Index of the camera to use (e.g., `0` for the default webcam).
 - `<port>`: Port number to run the WebSocket server on.
-
-**Example:**
-```sh
-python sticher.py 0 8765
-```
 
 ### Workflow
 
